@@ -21,7 +21,15 @@
 <div>
     <ul>
         <li *ngFor="let n of numbers">
-            {{ n }}
+            <div *ngIf="n === 'Walkers assessment'">
+                <span class="walkers">Walkers </span>
+                <span class="assessment">assessment </span>
+            </div>
+            <div *ngIf="n !== 'Walkers assessment'" [ngClass]="{
+                'assessment' : n === 'assessment'
+            }">
+                <span>{{ n }} </span>
+            </div>
         </li>
     </ul>
 </div>
