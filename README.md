@@ -22,3 +22,13 @@ The project will be created using the the "angular" template provided by the .NE
     - Numbers divisible only by 3 should give "walkers" in normal color
     - Numbers divisible only by 5 should give "assessment" in red color
     - Numbers divisible by 5 and 3 should give "Walkers assessment" with "Walkers" in green and "assessment" in red
+- For Step 2 point h it says 'Update the logic, so that if today is Monday, "walkers" is substituted with "walkers-m" and "assessment" is substituted with "assessment-m".'
+  Therefore the acceptance criteria I'm using is:
+    - Numbers divisible only by 3 should give "walkers-m" on monday and "walkers" in any other day
+    - Numbers divisible only by 5 should give "assessment-m" on monday and "assesment" in any other day
+    - Numbers divisible by 5 and 3 should give "Walkers assessment-m" on monday and "Walkers assessment" in any other day
+
+#### Note: I'm using the same "logic" for both items, which is that the requirement is refering to the individual words 
+#### With that criteria "walkers" can't be found in "Walkers assessment" and can be found in "walkers" 
+#### "assessment" can be found in "Walkers assessment" and in "assessment"
+#### "Walkers" can be found in "Walkers assessment" and not in "walkers"

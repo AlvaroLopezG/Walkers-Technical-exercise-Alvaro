@@ -11,6 +11,7 @@ import { WalkersAssessmentHelper } from './walkers-assessment.helper';
 export class WalkersAssessmentComponent {
   walkersAssessmentForm;
   numbers;
+  weekDay;
 
   constructor(
     private formBuilder: FormBuilder
@@ -25,6 +26,7 @@ export class WalkersAssessmentComponent {
         isNotAWholeNumberValidator()
       ]
     );
+
     this.walkersAssessmentForm = this.formBuilder.group({
       number: numberControl
     });
@@ -32,6 +34,9 @@ export class WalkersAssessmentComponent {
 
   onSubmit(data) {
     if(this.walkersAssessmentForm.valid) {
+      //I calculate this on the submit in case the page has been opened for a while
+      this.weekDay = new Date().getDay();
+
       var walkersAssessmentHelper = new WalkersAssessmentHelper();
       this.numbers = walkersAssessmentHelper.countTo(data.number);
     }

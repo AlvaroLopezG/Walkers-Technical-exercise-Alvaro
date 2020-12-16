@@ -23,12 +23,14 @@
         <li *ngFor="let n of numbers">
             <div *ngIf="n === 'Walkers assessment'">
                 <span class="walkers">Walkers </span>
-                <span class="assessment">assessment </span>
+                <span class="assessment" *ngIf="weekDay !== 1">assessment </span>
+                <span class="assessment" *ngIf="weekDay == 1">assessment-m </span>
             </div>
             <div *ngIf="n !== 'Walkers assessment'" [ngClass]="{
                 'assessment' : n === 'assessment'
             }">
-                <span>{{ n }} </span>
+            <span *ngIf="weekDay !== 1 || (n !== 'walkers' && n !== 'assessment')"> {{ n }} </span>
+            <span *ngIf="weekDay === 1 && (n === 'walkers' || n === 'assessment')"> {{ n }}-m </span>
             </div>
         </li>
     </ul>
