@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { isNotANumberValidator, isNotAWholeNumberValidator } from '../validators/numeric-validators';
 import { WalkersAssessmentHelper } from './walkers-assessment.helper';
 
 @Component({
@@ -14,7 +15,16 @@ export class WalkersAssessmentComponent {
   constructor(
     private formBuilder: FormBuilder
   ) {
-    let numberControl = new FormControl(null);
+    let numberControl = new FormControl(
+      null,
+      [
+        Validators.required,
+        isNotANumberValidator(),
+        Validators.min(1),
+        Validators.max(200),
+        isNotAWholeNumberValidator()
+      ]
+    );
     this.walkersAssessmentForm = this.formBuilder.group({
       number: numberControl
     });
