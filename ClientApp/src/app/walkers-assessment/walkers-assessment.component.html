@@ -20,7 +20,7 @@
 </form>
 <div>
     <ul>
-        <li *ngFor="let n of numbers">
+        <li *ngFor="let n of pageNumbers">
             <div *ngIf="n === 'Walkers assessment'">
                 <span class="walkers">Walkers </span>
                 <span class="assessment" *ngIf="weekDay !== 1">assessment </span>
@@ -34,4 +34,8 @@
             </div>
         </li>
     </ul>
+</div>
+<div>
+    <button type="button" *ngIf="page > 1" (click)="getPage(page - 1)">Previous page</button>
+    <button type="button" *ngIf="numbers && page * 20 < numbers.length" (click)="getPage(page + 1)">Next page</button>
 </div>

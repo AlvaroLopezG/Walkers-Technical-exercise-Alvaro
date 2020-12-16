@@ -12,6 +12,8 @@ export class WalkersAssessmentComponent {
   walkersAssessmentForm;
   numbers;
   weekDay;
+  pageNumbers;
+  page;
 
   constructor(
     private formBuilder: FormBuilder
@@ -32,6 +34,11 @@ export class WalkersAssessmentComponent {
     });
   }
 
+  getPage(page) {
+    this.page = page;
+    this.pageNumbers = this.numbers.slice((page - 1) * 20, page * 20);
+  }
+
   onSubmit(data) {
     if(this.walkersAssessmentForm.valid) {
       //I calculate this on the submit in case the page has been opened for a while
@@ -39,6 +46,7 @@ export class WalkersAssessmentComponent {
 
       var walkersAssessmentHelper = new WalkersAssessmentHelper();
       this.numbers = walkersAssessmentHelper.countTo(data.number);
+      this.getPage(1);
     }
   }
 }
