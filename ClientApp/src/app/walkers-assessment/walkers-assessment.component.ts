@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { WalkersAssessmentHelper } from './walkers-assessment.helper';
 
 @Component({
   selector: 'app-walkers-assessment',
@@ -8,6 +9,7 @@ import { FormBuilder, FormControl } from '@angular/forms';
 })
 export class WalkersAssessmentComponent {
   walkersAssessmentForm;
+  numbers;
 
   constructor(
     private formBuilder: FormBuilder
@@ -19,6 +21,9 @@ export class WalkersAssessmentComponent {
   }
 
   onSubmit(data) {
-    console.log(data);
+    if(this.walkersAssessmentForm.valid) {
+      var walkersAssessmentHelper = new WalkersAssessmentHelper();
+      this.numbers = walkersAssessmentHelper.countTo(data.number);
+    }
   }
 }

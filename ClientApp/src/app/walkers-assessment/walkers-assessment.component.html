@@ -7,3 +7,10 @@
         <button type="submit" [disabled]="!walkersAssessmentForm.valid">Let's count</button>
     </div>
 </form>
+<div>
+    <ul>
+        <li *ngFor="let n of numbers">
+            {{ n }}
+        </li>
+    </ul>
+</div>
