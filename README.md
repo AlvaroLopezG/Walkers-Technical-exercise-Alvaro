@@ -58,6 +58,24 @@ To the right of the text input of the angular app there's a checkbox if you chec
 If you uncheck it a request will be made to the API
 
 
+## Regarding testing the Service
+For this test I used VSCode and the .net command CLI . I couldn't get the test to run as it seems to be missing the Microsoft.VisualStudio reference. 
+I coudln't install it so sadaly I could not include the test for the Restful service. 
+For reference the unit test that is missing is 
 
+```
+public void TestWalkersHelper()
+{
+  string[] result;
+  string[] expected = {"1", "2", "walkers", "4", 
+      "assessment", "walkers", "7", "8",
+      "walkers", "assessment", "11", "walkers",
+      "13", "14", "Walkers assessment", "16"};
+            
+      var helper = new WalkersAssessmentHelper();
+      
+      result = helper.CountTo(16);
 
-
+      CollectionAssert.AreEqual(result, expected);
+}
+```
