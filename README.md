@@ -53,6 +53,9 @@ In the angular I would change the "helper" so instead of making the count will m
 The method of the class and interface should change so it returns a promise instead of a string array, that way the component can just show the results when ready. 
 Of course, tests and component should also be modified as well to adapt to the above
 
+## To use the API
+To the right of the text input of the angular app there's a checkbox if you check it the counting will be done in the local helper (just like step 2 and 1) 
+If you uncheck it a request will be made to the API
 
 
 
