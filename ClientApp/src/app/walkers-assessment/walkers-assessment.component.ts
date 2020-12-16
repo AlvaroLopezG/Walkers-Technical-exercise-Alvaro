@@ -1,7 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { isNotANumberValidator, isNotAWholeNumberValidator } from '../validators/numeric-validators';
-import { WalkersAssessmentHelper } from './walkers-assessment.helper';
+import { WalkersAssessmentHelperAPI, WalkersAssessmentHelperLocal } from './walkers-assessment.helper';
 
 @Component({
   selector: 'app-walkers-assessment',
@@ -16,8 +17,10 @@ export class WalkersAssessmentComponent {
   page;
 
   constructor(
+    private http: HttpClient,
     private formBuilder: FormBuilder
   ) {
+    let useLocalControl = new FormControl(true);
     let numberControl = new FormControl(
       null,
       [
@@ -30,7 +33,8 @@ export class WalkersAssessmentComponent {
     );
 
     this.walkersAssessmentForm = this.formBuilder.group({
-      number: numberControl
+      number: numberControl,
+      useLocal: useLocalControl
     });
   }
 
@@ -40,13 +44,21 @@ export class WalkersAssessmentComponent {
   }
 
   onSubmit(data) {
-    if(this.walkersAssessmentForm.valid) {
+    if (this.walkersAssessmentForm.valid) {
       //I calculate this on the submit in case the page has been opened for a while
       this.weekDay = new Date().getDay();
+      var walkersAssessmentHelper;
+      if (data.useLocal) {
+        walkersAssessmentHelper = new WalkersAssessmentHelperLocal();
+      } else {
+        walkersAssessmentHelper = new WalkersAssessmentHelperAPI(this.http);
+      }
+      walkersAssessmentHelper.countTo(data.number)
+        .then(result => {
+          this.numbers = result;
+          this.getPage(1);
+        })
 
-      var walkersAssessmentHelper = new WalkersAssessmentHelper();
-      this.numbers = walkersAssessmentHelper.countTo(data.number);
-      this.getPage(1);
     }
   }
 }

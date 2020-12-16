@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { WalkersAssessmentComponent } from './walkers-assessment/walkers-assessment.component';
-
 
 @NgModule({
   declarations: [
@@ -14,7 +14,8 @@ import { WalkersAssessmentComponent } from './walkers-assessment/walkers-assessm
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

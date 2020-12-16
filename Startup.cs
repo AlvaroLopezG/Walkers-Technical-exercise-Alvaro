@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Walkers_Technical_exercise_Alvaro.Services;
 
 namespace Walkers_Technical_exercise_Alvaro
 {
@@ -21,11 +22,15 @@ namespace Walkers_Technical_exercise_Alvaro
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddHttpContextAccessor();
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            //Inject the implementation of the helper
+            services.AddScoped<IWalkersAssessmentHelper, WalkersAssessmentHelper>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,12 +55,12 @@ namespace Walkers_Technical_exercise_Alvaro
 
             app.UseRouting();
 
-            /*app.UseEndpoints(endpoints =>
+            app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
-            });*/
+            });
 
             app.UseSpa(spa =>
             {

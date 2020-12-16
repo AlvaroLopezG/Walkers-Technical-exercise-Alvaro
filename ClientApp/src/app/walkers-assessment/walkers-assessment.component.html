@@ -2,6 +2,7 @@
 <form [formGroup]="walkersAssessmentForm" (ngSubmit)="onSubmit(walkersAssessmentForm.value)">
     <div>
         <input formControlName="number" type="number" required/>
+        <input formControlName="useLocal" type="checkbox" /> Use local
         <div *ngIf="walkersAssessmentForm.invalid && (walkersAssessmentForm.controls.number.dirty || walkersAssessmentForm.controls.number.touched)">
             <span class="error" *ngIf="walkersAssessmentForm.controls.number.errors.min || walkersAssessmentForm.controls.number.errors.max">
                 Your input must be a number between 1 and 200
