@@ -9,7 +9,7 @@ export class WalkersAssessmentHelper implements IWalkersAssessmentHelper {
             if(i % 3 == 0 && i % 5 == 0) {
                 result.push("Walkers assessment");
             } else if(i % 3 == 0) {
-                result.push("Walkers");
+                result.push("walkers");
             } else if(i % 5 == 0) {
                 result.push("assessment");
             } else {
