@@ -2,6 +2,17 @@
 <form [formGroup]="walkersAssessmentForm" (ngSubmit)="onSubmit(walkersAssessmentForm.value)">
     <div>
         <input formControlName="number" type="number" />
+        <div *ngIf="walkersAssessmentForm.invalid && (walkersAssessmentForm.controls.number.dirty || walkersAssessmentForm.controls.number.touched)">
+            <span class="error" *ngIf="walkersAssessmentForm.controls.number.errors.min || walkersAssessmentForm.controls.number.errors.max">
+                Your input must be a number between 1 and 200
+            </span>
+            <span class="error" *ngIf="walkersAssessmentForm.controls.number.errors.isNotAWholeNumber">
+                The number must not have decimals
+            </span>
+            <span class="error" *ngIf="walkersAssessmentForm.controls.number.errors.isNotANumber">
+                Your input must be a number
+            </span>
+        </div>
     </div>
     <div>
         <button type="submit" [disabled]="!walkersAssessmentForm.valid">Let's count</button>
