@@ -8,4 +8,9 @@ The project will be created using the the "angular" template provided by the .NE
 1. Open the project with Visual Studio
 2. Run the project 
 
-### Note: Make sure To use the "Walkers_Technical_exercise_Alvaro" configuration (not the IIS one)
+#### Note: Make sure To use the "Walkers_Technical_exercise_Alvaro" configuration (not the IIS one)
+
+## Testing angular
+1. Open terminal
+2. Go to <projectLocation>/ClientApp/src/app
+3. Run command "ng test"
