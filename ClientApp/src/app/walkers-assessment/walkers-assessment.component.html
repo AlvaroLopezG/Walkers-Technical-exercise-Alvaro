@@ -35,3 +35,7 @@
         </li>
     </ul>
 </div>
+<div>
+    <button type="button" *ngIf="page > 1" (click)="getPage(page - 1)">Previous page</button>
+    <button type="button" *ngIf="numbers && page * 20 < numbers.length" (click)="getPage(page + 1)">Next page</button>
+</div>
