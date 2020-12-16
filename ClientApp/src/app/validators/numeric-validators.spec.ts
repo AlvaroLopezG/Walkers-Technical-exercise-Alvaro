@@ -9,8 +9,8 @@ describe('ValidatorTest', () => {
       numberControl = new FormControl(
           null,
           [
-            isNotANumberValidator,
-            isNotAWholeNumberValidator
+            isNotANumberValidator(),
+            isNotAWholeNumberValidator()
           ]
       )
   })
@@ -19,10 +19,6 @@ describe('ValidatorTest', () => {
     numberControl.setValue(123);
     expect(numberControl.valid).toBe(true);
     numberControl.setValue("123");
-    expect(numberControl.valid).toBe(true);
-    numberControl.setValue(12.3);
-    expect(numberControl.valid).toBe(true);
-    numberControl.setValue("12.3");
     expect(numberControl.valid).toBe(true);
     numberControl.setValue(null);
     expect(numberControl.valid).toBe(false);
